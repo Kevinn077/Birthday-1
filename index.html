@@ -10,31 +10,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        html{
-        height: 100%;
-    }
+        /* FIX 1: Ensure HTML takes full height */
+        html {
+            height: 100%;
+        }
 
         :root{
             --vh: 1vh;
         }
         body {
             margin: 0;
-            overflow-x: hidden; /* Horizontal scroll off */
-            overflow-y: auto;
+            /* FIX 2: Prevent cut-off by allowing vertical scroll */
+            overflow-x: hidden;
+            overflow-y: auto; 
+            
             font-family: 'Inter', sans-serif;
             height: 100vh;
+            /* FIX 3: JavaScript controlled height */
             height: calc(var(--vh ,1vh) * 100);
             touch-action: manipulation;
             background: linear-gradient(135deg, #ffd6e8, #ff9ac9, #ff70b7);
-
-
         }
 
         #app {
             position: relative;
             width: 100%;
+            /* FIX 4: Apply JS-controlled height to #app */
             height: 100vh;
-            height: calc(var(--vh, 1vh) * 100);
+            height: calc(var(--vh ,1vh) * 100);
             overflow: hidden;
         }
 
@@ -174,8 +177,9 @@
             top: 0;
             left: 0;
             width: 100%;
+            /* FIX 5: Apply JS-controlled height to canvas */
             height: 100vh;
-            height: calc(var(--vh, 1vh) * 100);
+            height: calc(var(--vh ,1vh) * 100);
             z-index: 1;
         }
     </style>
@@ -190,7 +194,6 @@
         </div>
 
         <div id="content">
-            <!-- Step 1: Initial Reveal -->
             <div class="step active" id="step1">
                 <div class="emoji heart-beat">❤️</div>
                 <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gradient">Hey Beautiful</h1>
@@ -198,7 +201,6 @@
                 <button class="btn" id="start-btn">Let's Begin</button>
             </div>
 
-            <!-- Step 2: Birthday Message -->
             <div class="step" id="step2">
                 <div class="emoji">🎉</div>
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gradient">Happy Birthday!</h2>
@@ -209,7 +211,6 @@
                 <button class="btn" id="next-btn-2">What makes you special?</button>
             </div>
 
-            <!-- Step 3: Reasons You're Amazing -->
             <div class="step" id="step3">
                 <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gradient">Here's why you're incredible</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -233,7 +234,6 @@
                 <button class="btn" id="next-btn-3">A Little Surprise</button>
             </div>
 
-            <!-- Step 4: Memory Lane -->
             <div class="step" id="step4">
                 <div class="emoji">📸</div>
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gradient">Remember When...</h2>
@@ -248,7 +248,6 @@
                 <button class="btn" id="next-btn-4">One Last Thing</button>
             </div>
 
-            <!-- Step 5: Final Wish -->
             <div class="step" id="step5">
                 <div class="emoji">🎂</div>
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gradient">My Birthday Wish For You</h2>
@@ -266,7 +265,7 @@
     </div>
 
     <script>
-
+        // MOBILE HEIGHT FIX JAVASCRIPT (यह कोड बिल्कुल सही है)
         function setMobileHeight() {
           // Calculate 1% of the actual window inner height
           let vh = window.innerHeight * 0.01; 
@@ -506,7 +505,4 @@
     </script>
 </body>
 
-
 </html>
-
-
